@@ -1,0 +1,112 @@
+<html>
+<head>
+	<title>Utilização de IA para detecção de vogais</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" /> 
+</head>
+<body>
+	<div class="header">
+		<div class="content">
+			<h1><a href="http://localhost/ia_vogais/">Utilização de IA para detecção de vogais</a></h1>
+		</div>
+	</div>
+	<div class="content main">
+		<form class="box">
+			<div class="functions">
+				<button onclick="return limpar();">Limpar</button>
+				<button onclick="return enviar();">Enviar</button>
+			</div>
+			<div class="vogal">
+
+				<div class="line">
+				<!-- Linha 1 -->
+					<a href="" onclick="return marcar(this);" id="11" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="12" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="13" value="0"></a>
+				</div>
+
+				<div class="line">
+					<!-- Linha 2 -->
+					<a href="" onclick="return marcar(this);" id="21" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="22" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="23" value="0"></a>
+				</div>
+
+				<div class="line">
+					<!-- Linha 3 -->
+					<a href="" onclick="return marcar(this);" id="31" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="32" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="33" value="0"></a>
+				</div>
+
+				<div class="line">
+					<!-- Linha 4 -->
+					<a href="" onclick="return marcar(this);" id="41" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="42" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="43" value="0"></a>
+				</div>
+
+				<div class="line">
+					<!-- Linha 5 -->
+					<a href="" onclick="return marcar(this);" id="51" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="52" value="0"></a>
+					<a href="" onclick="return marcar(this);" id="53" value="0"></a>
+				</div>
+
+
+			</div>
+		</form>
+	</div>
+	<div class="footer"><p>Desenvolvido por Diorgenes Ferreira e Marcos Vinicius</p></div>
+	<script type="text/javascript">
+		function marcar(Item){
+			//alert(Item.id);
+			
+			if(Item.value=="1"){
+				Item.value="0";
+				Item.style.backgroundColor="white";
+			}
+			else{
+				Item.value="1";
+				Item.style.backgroundColor="#327fc7";
+			}	
+
+			return false;
+		}
+
+		
+		function limpar(){
+
+			$('.vogal a').each(function () {
+				this.value="0";
+				this.style.backgroundColor="white";
+			});
+
+		    return false;
+		}
+
+		function enviar(){
+			$elements = "";
+			$('.vogal a').each(function () {
+				var valor;
+				if(this.value!=1)
+				{
+					valor=0;
+				}
+				else valor = 1;
+				$elements+=this.id+"="+valor+"&";
+			});
+			$elements+="a=a";
+
+			$url="http://localhost/ia_vogais/exportar.php?"+$elements;
+			//alert($url);
+			location.href=$url;
+			return false;
+		}
+		
+
+	</script>
+</body>
+</html>
